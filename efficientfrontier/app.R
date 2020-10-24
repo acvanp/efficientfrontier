@@ -296,8 +296,8 @@ efficient.frontier = function(tickers,
   table.out = data.frame( c(tickers, "overall"),
                           c(as.vector(unlist(distribution)), sum(distribution)), 
                           c(as.vector(unlist(shares.bought)), sum(shares.bought)),
-                          c(as.vector(unlist(buyin)), ""), 
-                          c(as.vector(unlist(cashout)), paste0("$", round(sum(gain)), " profit") ), 
+                          c(as.vector(round(unlist(buyin),2)), ""), 
+                          c(as.vector(round(unlist(cashout),2)), paste0("$", round(sum(gain)), " profit") ), 
                           c(100*round(as.vector(unlist(returns)),2), paste(pct.returns, "% return") ))
   
   colnames(table.out) = c("ticker", "dist.$", "shares", "Buy price $", "Sell price $", "returns %")

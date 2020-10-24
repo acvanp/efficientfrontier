@@ -5,8 +5,8 @@ account: acvanp
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3088565
-bundleId: 3778723
+bundleId: 3778743
 url: https://acvanp.shinyapps.io/efficientfrontier/
-when: 1603583078.87171
+when: 1603583569.55818
 asMultiple: FALSE
 asStatic: FALSE
