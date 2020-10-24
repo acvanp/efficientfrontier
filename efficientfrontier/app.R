@@ -45,7 +45,7 @@ ui <- fluidPage(shinyjs::useShinyjs(),
                   dateInput("cash.out.date", "Cash out date", value = "2020-10-20"),
                   helpText(""),
                   
-                  uiOutput("GitHub and Info")
+                  uiOutput("urllinks")
                   
                 )
                 
@@ -373,8 +373,8 @@ server <- function(input, output) {
   
   output$tableout <- renderTable(v$data1[[2]])
   
-  url <- a("GitHub and Info", href = "https://acvanp.shinyapps.io/COVID-19/")
-  output$virusDashboard <- renderUI({
+  url <- a("GitHub and Info", href = "https://github.com/acvanp/efficientfrontier")
+  output$urllinks <- renderUI({
     tagList(url)
   })
   
