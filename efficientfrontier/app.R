@@ -94,6 +94,7 @@ efficient.frontier = function(tickers,
   
   tickers = unlist(strsplit(tickers, ","))
   tickers = stri_replace_all_fixed(tickers, " ", "")
+  tickers = toupper(tickers)
   
   weight.intervals = c(0.01, 0.01, 0.01,
                        0.02, 0.02, 0.1,
