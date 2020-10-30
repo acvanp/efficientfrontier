@@ -186,6 +186,8 @@ efficient.frontier = function(tickers,
   
   prices <- lapply(tickers, function(x) Ad(get(x)))
   
+
+  
   ipo.dates = c()
   
   for(i in 1:n){
@@ -199,6 +201,31 @@ efficient.frontier = function(tickers,
              to = end.date)
   
   prices <- lapply(tickers, function(x) Ad(get(x)))
+  
+  
+  
+  #reduce the number of rows for assets that tradeon weekends
+  ll = sapply(prices, length)
+  minrows = prices[[which(min(ll) %in% ll)]]
+  
+  for(i in 1:n){
+    if(i == which(ll == min(ll))){next}
+    if( length(prices[[i]]) == length(minrows)){next}
+    prices[[i]] = prices[[i]][which(index(prices[[i]]) %in% index(minrows))]
+  }
+  
+  prices = na.omit(prices)
+  
+  
+  #reduce the number of rows for assets that tradeon weekends
+  ll = sapply(prices, length)
+  minrows = prices[[which(min(ll) %in% ll)]]
+  
+  for(i in 1:n){
+    if(i == which(ll == min(ll))){next}
+    if( length(prices[[i]]) == length(minrows)){next}
+    prices[[i]] = prices[[i]][which(index(prices[[i]]) %in% index(minrows))]
+  }
   
   
   
@@ -334,6 +361,50 @@ efficient.frontier = function(tickers,
              to = cash.out.date)
   
   prices <- lapply(tickers, function(x) Ad(get(x)))
+  
+  
+  
+  ipo.dates = c()
+  
+  for(i in 1:n){
+    ipo.dates = c(ipo.dates, index(prices[[i]][1]) )
+  }
+  
+  start.date = as.Date(max(ipo.dates))
+  
+  getSymbols(tickers,
+             from = start.date,
+             to = end.date)
+  
+  prices <- lapply(tickers, function(x) Ad(get(x)))
+  
+  
+  
+  #reduce the number of rows for assets that tradeon weekends
+  ll = sapply(prices, length)
+  minrows = prices[[which(min(ll) %in% ll)]]
+  
+  for(i in 1:n){
+    if(i == which(ll == min(ll))){next}
+    if( length(prices[[i]]) == length(minrows)){next}
+    prices[[i]] = prices[[i]][which(index(prices[[i]]) %in% index(minrows))]
+  }
+  
+  prices = na.omit(prices)
+  
+  
+  #reduce the number of rows for assets that tradeon weekends
+  ll = sapply(prices, length)
+  minrows = prices[[which(min(ll) %in% ll)]]
+  
+  for(i in 1:n){
+    if(i == which(ll == min(ll))){next}
+    if( length(prices[[i]]) == length(minrows)){next}
+    prices[[i]] = prices[[i]][which(index(prices[[i]]) %in% index(minrows))]
+  }
+  
+  
+  
   
   df = data.frame(prices[[1]])
   for(i in 2:length(tickers)){
@@ -474,6 +545,29 @@ portfolio.tester = function(tickers,
              to = end.date)
   
   prices <- lapply(tickers, function(x) Ad(get(x)))
+  
+  #reduce the number of rows for assets that tradeon weekends
+  ll = sapply(prices, length)
+  minrows = prices[[which(min(ll) %in% ll)]]
+  
+  for(i in 1:n){
+    if(i == which(ll == min(ll))){next}
+    if( length(prices[[i]]) == length(minrows)){next}
+    prices[[i]] = prices[[i]][which(index(prices[[i]]) %in% index(minrows))]
+  }
+  
+  prices = na.omit(prices)
+  
+  
+  #reduce the number of rows for assets that tradeon weekends
+  ll = sapply(prices, length)
+  minrows = prices[[which(min(ll) %in% ll)]]
+  
+  for(i in 1:n){
+    if(i == which(ll == min(ll))){next}
+    if( length(prices[[i]]) == length(minrows)){next}
+    prices[[i]] = prices[[i]][which(index(prices[[i]]) %in% index(minrows))]
+  }
   
   
   
